@@ -40,7 +40,9 @@ export const AvatarRenderer: React.FC<AvatarRendererProps> = ({
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            // Keep the complete source inside the transformable image box so
+            // zoom and pan can move the crop window across the full photo.
+            objectFit: 'contain',
             transform: `translate(${adjustments.x}%, ${adjustments.y}%) scale(${adjustments.zoom}) rotate(${adjustments.rotation}deg) ${
               adjustments.flipHorizontal ? 'scaleX(-1)' : ''
             }`,

@@ -1,7 +1,7 @@
 import type { ImageAdjustments } from '../types';
 
 /**
- * Generates a cropped canvas based on the image adjustments and desired size.
+ * Generates an image based on the adjustments, fitting the full photo by default.
  */
 export async function generateCroppedImage(
   imageSrc: string,
@@ -50,17 +50,18 @@ export async function generateCroppedImage(
         ctx.scale(-1, 1);
       }
 
-      // Calculate base image draw size preserving aspect ratio
+      // Fit the full image inside the square by default. Users can zoom in
+      // when they want a tighter crop and pan to choose the framing.
       const imgRatio = img.width / img.height;
-      let drawWidth = outputSize;
-      let drawHeight = outputSize;
+      let drawWidth: number;
+      let drawHeight: number;
 
       if (imgRatio > 1) {
-        drawHeight = outputSize;
-        drawWidth = outputSize * imgRatio;
-      } else {
         drawWidth = outputSize;
         drawHeight = outputSize / imgRatio;
+      } else {
+        drawWidth = outputSize * imgRatio;
+        drawHeight = outputSize;
       }
 
       // Apply zoom
