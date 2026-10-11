@@ -34,11 +34,11 @@ export const PRESET_AVATARS: PresetAvatar[] = [
 ];
 
 export const DEFAULT_PROFILE: UserProfileData = {
-  displayName: 'Alex Costa',
-  username: 'alexcosta',
-  bio: 'Criando coisas legais na internet ✨ | Designer & Tech Lover 🚀',
+  displayName: 'Kauã Victor',
+  username: 'kauazs',
+  bio: 'Criando coisas legais na internet ✨',
   location: 'São Paulo, Brasil',
-  website: 'profilelook.app',
+  website: 'google.com',
   isVerified: true,
   openToWork: false,
   jobTitle: 'Product Designer & Frontend Engineer',

@@ -1,20 +1,23 @@
-import { useState } from 'react';
-import type { SocialPlatform, ImageAdjustments, UserProfileData } from './types';
-import { PRESET_AVATARS, DEFAULT_PROFILE, PLATFORM_SPECS } from './constants/presets';
-import { Header } from './components/Header';
-import { NetworkSelector } from './components/NetworkSelector';
-import { PhotoEditor } from './components/PhotoEditor';
-import { InstagramMockup } from './components/mockups/InstagramMockup';
-import { TwitterMockup } from './components/mockups/TwitterMockup';
-import { DiscordMockup } from './components/mockups/DiscordMockup';
-import { LinkedInMockup } from './components/mockups/LinkedInMockup';
-import { TikTokMockup } from './components/mockups/TikTokMockup';
-import { WhatsAppMockup } from './components/mockups/WhatsAppMockup';
-import { YouTubeMockup } from './components/mockups/YouTubeMockup';
-import { MatrixOverview } from './components/mockups/MatrixOverview';
-import { generateCroppedImage, downloadDataUrl } from './utils/imageExport';
+'use client';
 
-export function App() {
+import { useState } from 'react';
+import type { SocialPlatform, ImageAdjustments, UserProfileData } from '../types';
+import { PRESET_AVATARS, DEFAULT_PROFILE, PLATFORM_SPECS } from '../constants/presets';
+import { Header } from '../components/Header';
+import { NetworkSelector } from '../components/NetworkSelector';
+import { PhotoEditor } from '../components/PhotoEditor';
+import { InstagramMockup } from '../components/mockups/InstagramMockup';
+import { TwitterMockup } from '../components/mockups/TwitterMockup';
+import { DiscordMockup } from '../components/mockups/DiscordMockup';
+import { LinkedInMockup } from '../components/mockups/LinkedInMockup';
+import { TikTokMockup } from '../components/mockups/TikTokMockup';
+import { WhatsAppMockup } from '../components/mockups/WhatsAppMockup';
+import { YouTubeMockup } from '../components/mockups/YouTubeMockup';
+import { MatrixOverview } from '../components/mockups/MatrixOverview';
+import { generateCroppedImage, downloadDataUrl } from '../utils/imageExport';
+import { GitHubIcon } from '../components/icons/BrandIcons';
+
+export default function Home() {
   const [imageSrc, setImageSrc] = useState<string>(PRESET_AVATARS[0].url);
   const [selectedPlatform, setSelectedPlatform] = useState<SocialPlatform>('instagram');
   const [adjustments, setAdjustments] = useState<ImageAdjustments>({
@@ -158,11 +161,20 @@ export function App() {
       </main>
 
       {/* Clean, quiet footer */}
-      <footer className="border-t border-zinc-900 py-4 text-center text-xs text-zinc-600">
-        <p>profile look • preview do seu perfil</p>
+      <footer className="border-t border-zinc-900 py-4 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
+          <p>profile look • preview do seu perfil</p>
+          <a
+            href="https://github.com/KauaZs/profile-look"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors"
+          >
+            <GitHubIcon className="w-3.5 h-3.5" />
+            <span>KauaZs/profile-look</span>
+          </a>
+        </div>
       </footer>
     </div>
   );
 }
-
-export default App;
